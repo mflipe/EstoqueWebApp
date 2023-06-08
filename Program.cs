@@ -1,6 +1,5 @@
+using EstoqueWebApp.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System.Data.Common;
 
 string ConnectionString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=root";
 

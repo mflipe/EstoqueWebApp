@@ -1,0 +1,52 @@
+﻿@model EstoqueWebApp.Models.ProductModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Adicionar um novo produto</h1>
+
+<h4>Informações do Produto</h4>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">@Html.DisplayNameFor(model => model.Name)</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">@Html.DisplayNameFor(model => model.Description)</label>
+                <textarea asp-for="Description" class="form-control" rows="5" cols="33"></textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label">@Html.DisplayNameFor(model => model.Quantity)</label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label">@Html.DisplayNameFor(model => model.Price)</label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Criar" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+
+<div>
+    <a class="btn btn-primary" asp-action="Index">Voltar a Lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
