@@ -10,6 +10,14 @@ public class ApplicationDbContext : DbContext
     {
     }
 
-    public DbSet<ProductModel> ProductViewModel { get; set; } = default!;
+    public DbSet<ProductModel> ProductModel { get; set; } = default!;
+
+    public DbSet<CategoryModel> CategoryModel { get; set; } = default!;
+
+    public DbSet<EstoqueWebApp.Models.LogModel> LogModel { get; set; } = default!;
+
+    public DbSet<EstoqueWebApp.Models.ClientModel> ClientModel { get; set; } = default!;
+
+    public DbSet<EstoqueWebApp.Models.SupplierModel> SupplierModel { get; set; } = default!;
 
 }

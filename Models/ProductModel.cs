@@ -23,4 +23,12 @@ public record ProductModel
     [Required(ErrorMessage = "O preço é obrigatório.")]
     [Display(Name = "Preço")]
     public decimal Price { get; set; } = 0;
+
+    [Required(ErrorMessage = "A categoria é obrigatória.")]
+    [Display(Name = "Categoria")]
+    public CategoryModel Category { get; set; }
+
+    [Required(ErrorMessage = "O fornecedor é obrigatório.")]
+    [Display(Name = "Fornecedor")]
+    public SupplierModel Supplier { get; set; }
 }
