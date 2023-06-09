@@ -18,7 +18,7 @@ public record ProductModel
     [Required(ErrorMessage = "O quantidade é obrigatória.")]
 
     [Display(Name = "Quantidade em Estoque")]
-    public int Quantity { get; set;} = 0;
+    public int Quantity { get; set; } = 0;
 
     [Required(ErrorMessage = "O preço é obrigatório.")]
     [Display(Name = "Preço")]

@@ -123,9 +123,9 @@ public class ProductController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Quantity,Price")] ProductModel productModel)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Quantity,Price,CategoryId,SupplierId")] ProductCreateViewModel productViewModel)
     {
-        if (id != productModel.Id)
+        if (id != productViewModel.Id)
         {
             return NotFound();
         }
@@ -134,6 +134,17 @@ public class ProductController : Controller
         {
             try
             {
+                var productModel = new ProductModel()
+                {
+                    Id = productViewModel.Id,
+                    Name = productViewModel.Name,
+                    Description = productViewModel.Description,
+                    Price = productViewModel.Price,
+                    Quantity = productViewModel.Quantity,
+                    Category = _context.CategoryModel.FirstOrDefault(o => o.Id == productViewModel.CategoryId),
+                    Supplier = _context.SupplierModel.FirstOrDefault(o => o.Id == productViewModel.SupplierId)
+                };
+
                 var log = new LogModel()
                 {
                     Type = "Produto",
@@ -146,7 +157,7 @@ public class ProductController : Controller
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductModelExists(productModel.Id))
+                if (!ProductModelExists(productViewModel.Id))
                 {
                     return NotFound();
                 }
@@ -157,7 +168,7 @@ public class ProductController : Controller
             }
             return RedirectToAction(nameof(Index));
         }
-        return View(productModel);
+        return View(productViewModel);
     }
 
     // GET: Product/Delete/5

@@ -31,6 +31,8 @@ public record ProductCreateViewModel
 
     public ProductCreateViewModel() { }
 
+    public int Id { get; set; }
+
     [Required(ErrorMessage = "O nome é obrigatório.")]
     [StringLength(50)]
     [Display(Name = "Nome do Produto")]
